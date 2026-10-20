@@ -579,23 +579,31 @@ table.ma-table td{ padding:10px 12px; border-bottom:1px solid var(--hairline-sof
       </div>
     </section>
 
-    <section class="fp-section">
-      <div class="fp-finding">
-        <div class="fp-kicker">Validation Finding</div>
-        <h3>Asset Code Alone Is Not Enough</h3>
-        <p style="margin:0;color:var(--charcoal);">Testing with the input files revealed a false-ready issue in the original matching logic. A matching asset code does not necessarily mean the correct supporting notice is available.</p>
-        <ul>
-          <li>The first version matched records using asset code alone and classified 16 out of 55 rows as Ready.</li>
-          <li>Eight of those 16 rows had a notice with a different transaction type, mostly interest-payment notices.</li>
-          <li>As a result, an ETR row for a loan maturity could incorrectly appear Ready even though the available notice supported a different transaction type.</li>
-          <li>After adding transaction type as a matching condition, the Ready count changed from 16 to 8.</li>
-        </ul>
-        <div class="fp-compare">
-          <div class="fp-ver old"><div class="fp-vh">Asset code only</div><div class="fp-vbig">16 <small>of 55 rows Ready</small></div><div class="fp-track"><span style="width:29.1%"></span></div><p>8 of the 16 had a notice of a different transaction type (false-ready).</p></div>
-          <div class="fp-ver new"><div class="fp-vh">Asset code + transaction type</div><div class="fp-vbig">8 <small>of 55 rows Ready</small></div><div class="fp-track"><span style="width:14.5%"></span></div><p>Ready only when the notice supports the same transaction type.</p></div>
-        </div>
-        <p class="fp-takeaway">Matching on both asset code and transaction type is what keeps a Ready status trustworthy.</p>
-      </div>
+  
+<section class="fp-section">
+  <div class="fp-finding">
+    <div class="fp-kicker">Challenges & Problem-Solving</div>
+    <h3>Refining Requirements and Debugging AI-Generated Functionality</h3>
+    <ul>
+      <li>
+        <strong>Managing token usage and providing sufficient context:</strong>
+        One challenge was managing token usage while providing Claude with enough context to build the dashboard accurately. Rather than repeatedly sending long prompts directly to Claude Cowork, I used ChatGPT to organise my requirements into a structured Markdown (.md) document. I explained the business terminology, workflow, and functionality I wanted, then used the document as a reference for Claude Cowork. This gave Claude a clearer set of requirements to follow and made the development process more structured.
+      </li>
+      <li>
+        <strong>Introducing new functionality without breaking existing logic:</strong>
+        When I requested support for Scheduled Paydown transactions, the initial implementation changed existing matching behaviour. I clarified that the new rule needed to be added without disrupting the existing logic. I also supplied an anonymised example in which a transaction was classified under a different type despite a Scheduled Paydown notice being available. Based on this example, I refined the requirements so Scheduled Paydown would appear only under the intended transaction category.
+      </li>
+      <li>
+        <strong>Investigating unexpected results and validating fixes:</strong>
+        After a subsequent change, Scheduled Paydown labels still appeared under other transaction types. I reported the unexpected behaviour to Claude, which identified browser-cached results as the likely cause. After reprocessing the source files, I confirmed that the Scheduled Paydown functionality worked as intended. I also tested and confirmed that the dropdown filter worked correctly.
+      </li>
+    </ul>
+    <p class="fp-takeaway">
+      Key learning: Building with AI requires more than writing prompts. It involves structuring requirements, providing relevant examples, refining existing logic, investigating unexpected behaviour, and validating the final output against expected results.
+    </p>
+  </div>
+</section>
+
     </section>
 
     <div class="fp-explore">
