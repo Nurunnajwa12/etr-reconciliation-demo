@@ -583,27 +583,34 @@ table.ma-table td{ padding:10px 12px; border-bottom:1px solid var(--hairline-sof
 
 <section class="fp-section">
   <div class="fp-finding">
-    <div class="fp-kicker">Challenges & Learning</div>
+    <div class="fp-kicker">CHALLENGES & LEARNING</div>
     <h3>Building, Refining & Validating with AI</h3>
 
-    <ul>
+    <ul style="padding-left: 20px; margin: 20px 0 0; display: flex; flex-direction: column; gap: 16px;">
       <li>
-        <strong>Structured requirements:</strong>
-        I used ChatGPT to organise my business requirements, workflow, and functionality into a Markdown (.md) document. This helped me manage token usage and give Claude Cowork clear, structured instructions.
+        <strong>Structuring requirements</strong><br>
+        I used ChatGPT to organise my business requirements, workflow, and functionality into a Markdown (.md) document. This helped manage token usage and gave Claude Cowork clear instructions to follow.
       </li>
+
       <li>
-        <strong>Refining AI-generated logic:</strong>
-        When adding Scheduled Paydown support, the initial changes affected existing matching behaviour. I provided anonymised examples and clarified the rules to ensure the new functionality worked without disrupting existing logic.
+        <strong>Refining AI-generated logic</strong><br>
+        When adding Scheduled Paydown support affected existing matching behaviour, I provided anonymised examples and clarified the rules to preserve existing functionality while introducing the new feature.
       </li>
+
       <li>
-        <strong>Debugging and validation:</strong>
-        When Scheduled Paydown labels appeared under the wrong transaction types, I reported the issue and investigated the suggested browser-cache cause. After reprocessing the source files, I confirmed that the functionality and dropdown filter worked correctly.
+        <strong>Debugging and validation</strong><br>
+        When Scheduled Paydown labels appeared under incorrect transaction types, I investigated the issue, tested the suggested browser-cache cause, and reprocessed the source files to verify the functionality and dropdown filter.
       </li>
     </ul>
 
-    <p class="fp-takeaway">
-      <strong>Key takeaway:</strong> Effective AI development requires clear requirements, iterative refinement, and testing against expected results.
-    </p>
+    <div style="margin-top: 28px; padding: 16px 18px; border-left: 3px solid var(--accent, #64748b); background: var(--surface-muted, #f5f6f8); border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;">
+        Key Takeaway
+      </div>
+      <p style="margin: 0; line-height: 1.65;">
+        Effective AI development goes beyond prompting. It requires structured requirements, iterative refinement, and validation against expected results.
+      </p>
+    </div>
   </div>
 </section>
 
